@@ -1,3 +1,9 @@
+const int ZERO = []()
+{
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return 0;
+}();
 class Solution {
 public:
     int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
@@ -15,6 +21,7 @@ public:
                 maxProfit += pq.top().first;
                 i++;
             }else{
+
                pq.pop();
             }
         }

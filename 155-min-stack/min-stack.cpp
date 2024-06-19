@@ -36,7 +36,12 @@ public:
         return st2.top();
     }
 };
-
+const int ZERO = []()
+{
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return 0;
+}();
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack* obj = new MinStack();

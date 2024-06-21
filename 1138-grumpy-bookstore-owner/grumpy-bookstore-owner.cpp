@@ -21,3 +21,9 @@ public:
         return totoal_satisfied_customers + satisfied_customers;
     }
 };
+const int ZERO = []()
+{
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return 0;
+}();

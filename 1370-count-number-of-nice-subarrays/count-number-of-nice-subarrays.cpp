@@ -1,17 +1,23 @@
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {
-        int n = nums.size();
-        vector<int> cnt(n + 1, 0);
-        cnt[0] = 1;
-        int ans = 0, t = 0;
-        for (int v : nums) {
-            t += v & 1;
-            if (t - k >= 0) {
-                ans += cnt[t - k];
+        unordered_map<int,int> mp;
+        int oddCount = 0;
+        int res = 0;
+        mp[0] = 1;
+        for(int i:nums){
+            if(i % 2 != 0)  oddCount++;
+            if(mp.find(oddCount - k) != mp.end()){
+                res += mp[oddCount - k];
             }
-            cnt[t]++;
+            mp[oddCount]++;
         }
-        return ans;
+        return res;
     }
 };
+const int ZERO = []()
+{
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return 0;
+}();

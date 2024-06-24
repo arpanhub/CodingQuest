@@ -11,21 +11,39 @@
  */
 class Solution {
 public:
-   void traverse(TreeNode* root,vector<int> &ans){
-        if(!root) return;
-        traverse(root->left,ans);
-        ans.push_back(root->val);
-        traverse(root->right,ans);
-    }
-    bool isValidBST(TreeNode* root) {
-    vector<int> ans;
-    traverse(root,ans);
-    for(int i = 1;i< ans.size();i++){
-        if(ans[i-1] >= ans[i]){
-            return false;
+TreeNode* prev =NULL;
+bool ans = true;
+//    void traverse(TreeNode* root,vector<int> &ans){
+//         if(!root) return;
+//         traverse(root->left,ans);
+//         ans.push_back(root->val);
+//         traverse(root->right,ans);
+//     }
+void isBST(TreeNode* root){
+    if(!root) return;
+    isBST(root ->left);
+    if(prev != NULL){
+        if(prev->val >= root->val){
+            ans = false;
+            return;
         }
     }
-    return true;
+    prev = root;
+    isBST(root->right);
+}
+    bool isValidBST(TreeNode* root) {
+    // vector<int> ans;
+    // traverse(root,ans);
+    // for(int i = 1;i< ans.size();i++){
+    //     if(ans[i-1] >= ans[i]){
+    //         return false;
+    //     }
+    // }
+    // return true;
+    isBST(root);
+    if(ans) return true;
+    else return false;
+
     }
 };
 const int ZERO = []()

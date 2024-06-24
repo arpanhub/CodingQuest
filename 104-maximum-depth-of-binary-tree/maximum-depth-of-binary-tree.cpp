@@ -18,3 +18,9 @@ public:
         return 1 + max(lhs,rhs);
     }
 };
+const int ZERO = []()
+{
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return 0;
+}();

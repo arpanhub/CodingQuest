@@ -9,7 +9,28 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+ // 3 approches
 class Solution {
+public:
+    bool isBst(TreeNode* root,long min,long max){
+        if(!root) return true;
+        if(root-> val > min && root->val < max){
+        return isBst(root->left,min,root->val) && isBst(root->right,root->val,max);
+        }else{
+            return false;
+        }
+    }
+    bool isValidBST(TreeNode* root) {
+        return isBst(root,LONG_MIN,LONG_MAX);
+    }
+};
+
+
+
+
+
+
+/* class Solution {
 public:
 TreeNode* prev =NULL;
 bool ans = true;
@@ -45,7 +66,7 @@ void isBST(TreeNode* root){
     else return false;
 
     }
-};
+}; */
 const int ZERO = []()
 {
 	std::ios_base::sync_with_stdio(false);

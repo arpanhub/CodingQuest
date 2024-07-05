@@ -1,3 +1,11 @@
+const int ZERO = []()
+{
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return 0;
+}();
+
+
 class Solution {
 public:
     int CountMoves(int idx_i,int idx_j,int row,int column,vector<vector<int>> obstacleGrid,vector<vector<int>>& dp){

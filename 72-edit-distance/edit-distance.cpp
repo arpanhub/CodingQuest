@@ -1,3 +1,10 @@
+const int ZERO = []()
+{
+	std::ios_base::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return 0;
+}();
+
 class Solution {
 public:
     int minDist(string s1,string s2,int i,int j,vector<vector<int>>& dp){

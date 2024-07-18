@@ -9,67 +9,18 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
- // 3 approches
 class Solution {
 public:
-    bool isBst(TreeNode* root,long min,long max){
+   bool validate(TreeNode* root,long min,long max){
         if(!root) return true;
-        if(root-> val > min && root->val < max){
-        return isBst(root->left,min,root->val) && isBst(root->right,root->val,max);
+        if(root-> val < max && root->val > min){
+            return validate(root->left,min,root->val) && validate(root->right,root->val,max);
         }else{
             return false;
         }
     }
     bool isValidBST(TreeNode* root) {
-        return isBst(root,LONG_MIN,LONG_MAX);
+        return validate(root,LONG_MIN,LONG_MAX);
+        
     }
 };
-
-
-
-
-
-
-/* class Solution {
-public:
-TreeNode* prev =NULL;
-bool ans = true;
-//    void traverse(TreeNode* root,vector<int> &ans){
-//         if(!root) return;
-//         traverse(root->left,ans);
-//         ans.push_back(root->val);
-//         traverse(root->right,ans);
-//     }
-void isBST(TreeNode* root){
-    if(!root) return;
-    isBST(root ->left);
-    if(prev != NULL){
-        if(prev->val >= root->val){
-            ans = false;
-            return;
-        }
-    }
-    prev = root;
-    isBST(root->right);
-}
-    bool isValidBST(TreeNode* root) {
-    // vector<int> ans;
-    // traverse(root,ans);
-    // for(int i = 1;i< ans.size();i++){
-    //     if(ans[i-1] >= ans[i]){
-    //         return false;
-    //     }
-    // }
-    // return true;
-    isBST(root);
-    if(ans) return true;
-    else return false;
-
-    }
-}; */
-const int ZERO = []()
-{
-	std::ios_base::sync_with_stdio(false);
-	std::cin.tie(nullptr);
-	return 0;
-}();

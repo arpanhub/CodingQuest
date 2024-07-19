@@ -1,4 +1,3 @@
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -10,35 +9,31 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
- const int ZERO = []()
-{
-	std::ios_base::sync_with_stdio(false);
-	std::cin.tie(nullptr);
-	return 0;
-}();
-
-
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
         if(!root) return new TreeNode(val);
-        TreeNode* cur = root;
+        TreeNode* currentNode = root;
         while(true){
-            if(cur -> val <= val){
-                if(cur -> right != NULL) cur = cur -> right;
-                else{
-                cur -> right  = new TreeNode(val);
-                break;
-                } 
-            }
+            
+        if(currentNode -> val > val){
+            if(currentNode -> left){
+                currentNode = currentNode -> left;
+            } 
             else{
-                if(cur -> left != NULL) cur = cur -> left;
-                else{
-                     cur -> left = new TreeNode(val);
-                      break;
-                }
+                currentNode ->left = new TreeNode(val);
+                break;
+            } 
+        }
+        if(currentNode -> val < val){
+            if(currentNode -> right){
+                currentNode = currentNode -> right;
+            } else{
+                 currentNode ->right = new TreeNode(val);
+                 break;
             }
         }
+    }
         return root;
     }
 };

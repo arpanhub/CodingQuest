@@ -9,31 +9,44 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+   /*  class Solution {
+    public:
+        TreeNode* insertIntoBST(TreeNode* root, int val) {
+            if(!root) return new TreeNode(val);
+            TreeNode* currentNode = root;
+            while(true){
+                
+            if(currentNode -> val > val){
+                if(currentNode -> left){
+                    currentNode = currentNode -> left;
+                } 
+                else{
+                    currentNode ->left = new TreeNode(val);
+                    break;
+                } 
+            }
+            if(currentNode -> val < val){
+                if(currentNode -> right){
+                    currentNode = currentNode -> right;
+                } else{
+                    currentNode ->right = new TreeNode(val);
+                    break;
+                }
+            }
+        }
+            return root;
+        }
+    }; */
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
         if(!root) return new TreeNode(val);
-        TreeNode* currentNode = root;
-        while(true){
-            
-        if(currentNode -> val > val){
-            if(currentNode -> left){
-                currentNode = currentNode -> left;
-            } 
-            else{
-                currentNode ->left = new TreeNode(val);
-                break;
-            } 
+        if(root -> val > val){
+            root ->left = insertIntoBST(root->left,val);
         }
-        if(currentNode -> val < val){
-            if(currentNode -> right){
-                currentNode = currentNode -> right;
-            } else{
-                 currentNode ->right = new TreeNode(val);
-                 break;
-            }
+        if(root -> val < val){
+            root ->right = insertIntoBST(root->right,val);
         }
-    }
         return root;
     }
 };

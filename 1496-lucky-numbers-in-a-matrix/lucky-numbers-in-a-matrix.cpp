@@ -1,37 +1,23 @@
 class Solution {
 public:
-    vector<int> luckyNumbers(vector<vector<int>>& matrix) {
-        int N = matrix.size(), M = matrix[0].size();
-
-        vector<int> rowMin;
-        for (int i = 0; i < N; i++) {
-
-            int rMin = INT_MAX;
-            for (int j = 0; j < M; j++) {
-                rMin = min(rMin, matrix[i][j]);
+    vector<int> luckyNumbers (vector<vector<int>>& matrix) {
+        int Max_of_Mins_in_Row = INT_MIN;
+        for(int row = 0;row < matrix.size();row++){
+            int RowMin  = INT_MAX;
+            for(int col =  0;col < matrix[0].size();col++){
+                RowMin = min(RowMin,matrix[row][col]);
             }
-            rowMin.push_back(rMin);
+            Max_of_Mins_in_Row = max(Max_of_Mins_in_Row,RowMin);
         }
-
-        vector<int> colMax;
-        for (int i = 0; i < M; i++) {
-
-            int cMax = INT_MIN;
-            for (int j = 0; j < N; j++) {
-                cMax = max(cMax, matrix[j][i]);
+        int Min_of_Maxs_in_Col = INT_MAX;
+        for(int col = 0;col < matrix[0].size();col++){
+            int Colmax  = INT_MIN;
+            for(int row =  0;row < matrix.size();row++){
+                Colmax = max(Colmax,matrix[row][col]);
             }
-            colMax.push_back(cMax);
+            Min_of_Maxs_in_Col = min(Min_of_Maxs_in_Col,Colmax);
         }
-
-        vector<int> luckyNumbers;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                if (matrix[i][j] == rowMin[i] && matrix[i][j] == colMax[j]) {
-                    luckyNumbers.push_back(matrix[i][j]);
-                }
-            }
-        }
-
-        return luckyNumbers;
+        if(Max_of_Mins_in_Row == Min_of_Maxs_in_Col) return {Min_of_Maxs_in_Col};
+        else return {};
     }
 };

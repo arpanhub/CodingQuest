@@ -7,17 +7,17 @@ public:
         }
         // cout<<pq.top();
         long long sum = 0;
-        double num;
+        int num;
         long long num1;
         while(k--){
             num = pq.top();
             pq.pop();
             sum += num;
-            num = (num /3.0);
-            // cout<<num<<endl;
-            num1 = ceil(num);
+            // num = (num /3.0);
+            // // cout<<num<<endl;
+            // num1 = ceil(num);
             // cout<<num1<<" ";
-            pq.push(num1);
+            pq.push((num+2)/3);
             // cout<<pq.top()<<" ";
         }
         return sum;

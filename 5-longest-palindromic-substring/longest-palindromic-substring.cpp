@@ -1,13 +1,9 @@
 class Solution {
 public:
     bool ispalindrom(const string& s, int i, int j) {
-       while (i < j) {
-            if (s[i] != s[j])
-                return false;
-            i++;
-            j--;
-        }
-        return true;
+       if(i >= j) return true;
+       if(s[i] != s[j]) return false;
+       return ispalindrom(s,i+1,j-1);
     }
     string LPS(string s){
         int maxLength = 0;

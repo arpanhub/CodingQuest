@@ -1,23 +1,24 @@
 class Solution {
 public:
-    vector<vector<int>> result;
-    vector<int> path;
-    void backtracking(vector<int>& candidates,int target,int start,vector<int>& path){
-        if(target == 0){
-            result.push_back(path);
-        }
-        if(target < 0){
+    void solve(vector<int>& candidates,int target, vector<vector<int>>& res,vector<int> path,int idx){
+        if(idx == candidates.size()){
+            if(target == 0){
+                res.push_back(path);
+            }
             return;
         }
-        for(int i = start; i < candidates.size();i++){
-            //if( i > start && candidates[i] == candidates[i-1]) continue;
-            path.push_back(candidates[i]);
-            backtracking(candidates,target-candidates[i],i,path);
+        if(target >= candidates[idx]){
+            path.push_back(candidates[idx]);
+            solve(candidates,target-candidates[idx],res,path,idx);
             path.pop_back();
         }
+        solve(candidates,target,res,path,idx+1);
+        return;
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        backtracking(candidates,target,0,path);
-        return result;
+        vector<vector<int>> res;
+        vector<int> path;
+        solve(candidates,target,res,path,0);
+        return res;
     }
 };

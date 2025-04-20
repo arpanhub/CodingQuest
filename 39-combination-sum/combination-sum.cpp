@@ -10,14 +10,13 @@ public:
             return;
         }
         for(int i = start; i < candidates.size();i++){
-            if( i > start && candidates[i] == candidates[i-1]) continue;
+            //if( i > start && candidates[i] == candidates[i-1]) continue;
             path.push_back(candidates[i]);
             backtracking(candidates,target-candidates[i],i,path);
             path.pop_back();
         }
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        //sort(begin(candidates),end(candidates));
         backtracking(candidates,target,0,path);
         return result;
     }

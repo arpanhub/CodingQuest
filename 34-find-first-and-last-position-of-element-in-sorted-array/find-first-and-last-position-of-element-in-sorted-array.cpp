@@ -1,34 +1,34 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int left = 0;
-        int right = nums.size()-1;
+        int low = 0;
+        int high = nums.size()-1;
         int mid;
         int first = -1;
         int last = -1;
-        while(left <= right){
-            mid = (right + left)/2;
+        while(low <= high){
+            mid = (high + low)/2;
             if(nums[mid] > target){
-                right = mid - 1;
+                high = mid - 1;
             }else if(nums[mid] < target){
-                left = mid + 1;
+                low = mid + 1;
             }else{
                 first = mid;
-                right = mid - 1;
+                high = mid - 1;
             }
         }
-        left = 0;
-        right = nums.size()-1;
-        while(left <= right){
-            mid = (right + left)/2;
+        low = 0;
+        high = nums.size()-1;
+        while(low <= high){
+            mid = (high + low)/2;
             if(nums[mid] > target){
-                right = mid - 1;
+                high = mid - 1;
             }else if(nums[mid] < target){
-                left = mid + 1;
+                low = mid + 1;
             }else{
                 last = mid;
-                left = mid + 1;
-                cout<<left<<" ";
+                low = mid + 1;
+                cout<<low<<" ";
             }
         }
         return {first,last};
